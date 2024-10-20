@@ -58,14 +58,14 @@ const Navbar = () => {
         >
           <img
             src={isOpen ? closeIcon : menuIcon}
-            className="w-5 h-5"
+            className="w-4 h-4"
             alt="Menu"
           />
         </button>
 
         {/* Main Menu for larger screens */}
         <div className="hidden lg:flex space-x-6 ml-auto text-base font-semibold">
-          <Link to="/" className="text-blue-800 hover:text-gray-900">Home</Link>
+          <Link to="/" className="text-blue-900 hover:text-gray-900">Home</Link>
           <Link to="/how-it-works" className="text-gray-700 hover:text-gray-900">How It Works</Link>
           <Link to="/price-prediction" className="text-gray-700 hover:text-gray-900">Price Prediction</Link>
           <Link to="/about" className="text-gray-700 hover:text-gray-900">About Us</Link>
@@ -103,7 +103,7 @@ const Navbar = () => {
             <button onClick={toggleMenu} className="text-gray-700 focus:outline-none">
               <img
                 src={isOpen ? closeIcon : menuIcon}
-                className="w-5 h-5"
+                className="w-4 h-4 mr-auto mt-1 "
                 alt="Menu"
               />
             </button>
