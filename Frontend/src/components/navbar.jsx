@@ -64,12 +64,12 @@ const Navbar = () => {
         </button>
 
         {/* Main Menu for larger screens */}
-        <div className="hidden lg:flex space-x-6 ml-auto text-base font-semibold">
-          <Link to="/" className="text-blue-900 hover:text-gray-900">Home</Link>
-          <Link to="/how-it-works" className="text-gray-700 hover:text-gray-900">How It Works</Link>
-          <Link to="/price-prediction" className="text-gray-700 hover:text-gray-900">Price Prediction</Link>
-          <Link to="/about" className="text-gray-700 hover:text-gray-900">About Us</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-gray-900">Contact Us</Link>
+        <div className="hidden lg:flex space-x-6 ml-auto text-base font-semibold ">
+          <Link to="/" className="text-blue-900 hover:text-gray-900 hover:underline">Home</Link>
+          <Link to="/how-it-works" className="text-gray-700 hover:text-gray-900 hover:underline">How It Works</Link>
+          <Link to="/price-prediction" className="text-gray-700 hover:text-gray-900 hover:underline">Price Prediction</Link>
+          <Link to="/about" className="text-gray-700 hover:text-gray-900 hover:underline">About Us</Link>
+          <Link to="/contact" className="text-gray-700 hover:text-gray-900 hover:underline">Contact Us</Link>
         </div>
 
         {/* Sign In / Register for larger screens */}
