@@ -74,7 +74,7 @@ const Navbar = () => {
 
         {/* Sign In / Register for larger screens */}
         <div className="hidden md:flex items-center ml-8">
-          <Link to="/sign-in" className="mr-6">
+          <Link to="/signin" className="mr-6">
             <span className="inline-flex justify-center rounded-lg text-sm font-semibold py-2 px-4 border border-slate-900 text-slate-900 hover:bg-slate-100 transition">
               Sign in
             </span>
