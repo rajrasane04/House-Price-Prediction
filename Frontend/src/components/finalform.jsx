@@ -1,5 +1,5 @@
 import InputForm from "./inputform";
-import illustration from "../assets/illustration.svg"; // Import the first illustration
+import illustration from "../assets/illustration.svg";
 
 const FinalForm = () => {
   return (
