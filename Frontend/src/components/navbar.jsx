@@ -116,10 +116,10 @@ const Navbar = () => {
             <Link to="/price-prediction" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-blue-800">Price Prediction</Link>
             <Link to="/about" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-blue-800">About Us</Link>
             <Link to="/contact" onClick={() => setIsOpen(false)} className="text-gray-700 hover:text-blue-800">Contact Us</Link>
-            <Link to="/sign-in" onClick={() => setIsOpen(false)} className="inline-flex justify-center rounded-lg text-sm font-semibold py-2 px-4 border border-slate-900 text-slate-900 hover:bg-slate-100 hover:text-black transition">
+            <Link to="/signin" onClick={() => setIsOpen(false)} className="inline-flex justify-center rounded-lg text-sm font-semibold py-2 px-4 border border-slate-900 text-slate-900 hover:bg-slate-100 hover:text-black transition">
               Sign in
             </Link>
-            <Link to="/register" onClick={() => setIsOpen(false)} className="inline-flex justify-center rounded-lg text-sm font-semibold py-2 px-4 border border-transparent bg-slate-700 text-white hover:bg-slate-950 hover:text-white hover:border-slate-900 transition">
+            <Link to="/register" onClick={() => setIsOpen(false)} className="inline-flex justify-center rounded-lg text-sm font-semibold py-2 px-4 border border-transparent bg-slate-800 text-white hover:bg-slate-950 hover:text-white hover:border-slate-900 transition">
               Register
             </Link>
           </div>
