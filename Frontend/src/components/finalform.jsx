@@ -65,7 +65,7 @@ const FinalForm = () => {
         </div>
 
         {/* Illustration Section (Visible only on large screens) */}
-        <div className="w-full lg:w-1/3 flex justify-center lg:items-center mt-14 lg:block hidden">
+        <div className="w-full lg:w-2/5 justify-center lg:items-center mt-14 lg:block hidden">
           <img src={illustration} alt="House Pricing Illustration" className="w-full max-w-[400px]" />
         </div>
       </div>
