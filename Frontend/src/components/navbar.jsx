@@ -42,7 +42,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="p-5 bg-white border-b border-gray-300 relative">
+    <nav className="fixed top-0 left-0 right-0 p-5 bg-white border-b border-gray-300 shadow-md z-50">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-3">
           <img src={logo} className="w-8" alt="Logo" />
