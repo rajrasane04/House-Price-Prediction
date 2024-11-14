@@ -21,7 +21,7 @@ export function NotFound() {
         </Typography>
         <Link
           to="/"
-          className="w-full px-4 py-3 md:w-[8rem] text-sm font-medium text-blue-900 bg-transparent border border-blue-900 rounded-lg hover:bg-blue-950 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 text-center inline-block"
+          className="w-full px-4 py-3 md:w-[8rem] text-sm font-medium text-slate-900 bg-transparent border border-slate-900 rounded-lg hover:bg-slate-900 hover:text-white transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 text-center inline-block"
         >
           Back Home
         </Link>

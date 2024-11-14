@@ -4,8 +4,8 @@ const FinalForm = () => {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-800 px-4 pt-16">
             <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg p-10 my-6">
-                <h1 className="text-center text-3xl font-bold text-gray-800 mb-4">
-                    Welcome to HousePricer &hearts;
+                <h1 className="text-center text-3xl font-bold text-gray-800 mb-5">
+                Welcome to HousePricer&nbsp; &#10066; 
                 </h1>
                 <p className="text-center text-lg text-gray-600 mb-8">
                     Want to predict the price of a House? Try filling the details below:
@@ -33,7 +33,7 @@ const FinalForm = () => {
 
                 {/* Button */}
                 <button 
-                className="w-full px-4 py-3 text-sm font-medium text-white bg-blue-950 border border-blue-950 rounded-lg hover:bg-blue-900 hover:border-blue-900 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+                className="w-full px-4 py-3.5 text-sm font-medium text-white bg-slate-900 border  rounded-lg hover:bg-slate-800 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
                 >
                 Predict Price
                 </button>
