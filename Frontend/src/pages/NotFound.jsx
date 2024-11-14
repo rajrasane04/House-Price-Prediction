@@ -5,13 +5,13 @@ import NotFoundImage from "/src/assets/illustration3.svg";
 
 export function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 py-6 mt-10">
+    <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 py-6 ">
       <div className="space-y-6 max-w-md mx-auto">
         {/* Image with larger size and responsive scaling */}
         <img 
           src={NotFoundImage} 
           alt="Curiosity"
-          className="w-4/5 max-w-sm sm:max-w-md mt-8 mx-auto" // Increased image size
+          className="w-4/5 max-w-sm sm:max-w-md mt-8 mx-auto" 
         />
         <Typography
           variant="h1"
@@ -21,9 +21,9 @@ export function NotFound() {
           Error 404
         </Typography>
         <Typography className="text-base sm:text-lg md:text-xl font-normal text-gray-500 mx-auto px-2 sm:px-0">
-          Something went wrong. Please try refreshing the page or come back later.
+        Oops! Check the URL or go back to the homepage.
         </Typography>
-        {/* Button with additional top margin */}
+        {/* Button for Home Navigation */}
         <div className="mt-8"> 
           <Link
             to="/"
