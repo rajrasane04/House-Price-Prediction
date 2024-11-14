@@ -128,7 +128,7 @@ const UserAuthForm = ({ isRegister = false }) => {
                     to="/register"
                     className="font-medium text-zinc-600 text-sm hover:text-zinc-950 transition-colors"
                   >
-                    Don't have an account? Register
+                    Not a member? Create an Account
                   </Link>
                 </p>
               </>
