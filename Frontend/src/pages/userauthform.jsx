@@ -4,7 +4,7 @@ const UserAuthForm = ({ isRegister = false }) => {
   return (
     <div className="flex flex-col justify-center items-center bg-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 my-5">
       <div className="w-full max-w-md mx-auto flex flex-col justify-center">
-        <a className="mt-10 w-fit text-zinc-950" href="/">
+        <Link className="mt-10 w-fit text-zinc-950" to="/">
           <div className="flex items-center">
             <svg
               stroke="currentColor"
@@ -20,7 +20,7 @@ const UserAuthForm = ({ isRegister = false }) => {
             </svg>
             <p className="text-sm text-zinc-950">Go Back</p>
           </div>
-        </a>
+        </Link>
 
         <div className="mt-5 flex flex-col w-full max-w-xs sm:max-w-sm mx-auto">
           <p className="text-2xl font-bold text-zinc-950 text-center mb-3">
