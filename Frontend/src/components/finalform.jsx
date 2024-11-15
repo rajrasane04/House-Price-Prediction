@@ -12,7 +12,7 @@ const FinalForm = () => {
             Welcome to HousePricer&nbsp; &#10066; 
           </h1>
           <p className="text-center text-lg text-gray-600 mb-8">
-            Want to predict the price of a House? Try filling the details below:
+            Want to predict the price of your dream House? Try filling the details below:
           </p>
           
           {/* Input Section */}
