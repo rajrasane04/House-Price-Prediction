@@ -32,8 +32,7 @@ connectDB();
 
 // Enabling CORS for all or specific origins 
 const allowedOrigins = [
-  'https://housepricer-frontend.onrender.com',
-  'https://housepricer.netlify.app',
+  process.env.FRONTEND_URL,
   'http://localhost:5173',
 ];
 
@@ -69,7 +68,6 @@ app.post('/register', async (req, res) => {
       // Hash password before saving
       const salt = await bcrypt.genSalt(10); // Generate salt
       const hashedPassword = await bcrypt.hash(password, salt); // Hash the password
-      console.log(`Hashed password for ${email}: ${hashedPassword}`);  // Debugging log
   
       newUser.password = hashedPassword;
   
