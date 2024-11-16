@@ -32,7 +32,7 @@ connectDB();
 
 // Enabling CORS for all or specific origins 
 app.use(cors({
-  origin: ['https://housepricer-frontend.onrender.com'], // Your frontend's deployed URL
+  origin: ['https://housepricer.netlify.app'], // Your frontend's deployed URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add OPTIONS
   allowedHeaders: ['Content-Type', 'Authorization'], // Include Authorization
   credentials: true, 
