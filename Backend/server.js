@@ -33,7 +33,7 @@ connectDB();
 // Enabling CORS for all or specific origins 
 app.use(cors({
   origin: (origin, callback) => {
-      const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+      const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173','*'];
       if (!origin || allowedOrigins.includes(origin)) {
           callback(null, true);
       } else {
