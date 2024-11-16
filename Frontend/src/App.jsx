@@ -9,10 +9,10 @@ import NotFound from "./pages/NotFound";
 function App() {
   const location = useLocation();
 
-  // Scroll to top on route change to mimic full-page reload behavior
+  // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page
-  }, [location.pathname]); // Run every time the route (pathname) changes
+    window.scrollTo(0, 0); 
+  }, [location.pathname]); 
 
   return (
     <>
