@@ -31,11 +31,23 @@ connectDB();
 
 
 // Enabling CORS for all or specific origins 
+const allowedOrigins = [
+  'https://housepricer-frontend.onrender.com',
+  'https://housepricer.netlify.app',
+  'http://localhost:5173',
+];
+
 app.use(cors({
-  origin: ['https://housepricer-frontend.onrender.com'], // Your frontend's deployed URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add OPTIONS
-  allowedHeaders: ['Content-Type', 'Authorization'], // Include Authorization
-  credentials: true, 
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
 
 app.options('*', cors()); // Preflight request handler
