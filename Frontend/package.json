@@ -11,8 +11,11 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.10",
+<<<<<<< HEAD
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
+=======
+>>>>>>> 2f0c0a0884411caa04e675c55761721ad1df706e
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0"
