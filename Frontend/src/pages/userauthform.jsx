@@ -1,6 +1,47 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserAuthForm = ({ isRegister = false }) => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Registration validation: Password and Confirm Password should match
+    if (isRegister && password !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+
+    // Prepare data to send to the backend
+    const userData = { email, password };
+
+    try {
+      let response;
+
+      if (isRegister) {
+        // Sending registration request to the backend
+        response = await axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/register`, userData);
+        setMessage(response.data.message);
+        navigate("/signin"); // Redirect to sign-in after successful registration
+      } else {
+        // Sending signin request to the backend
+        response = await axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/signin`, userData);
+        // Store JWT token in localStorage
+        localStorage.setItem("authToken", response.data.token);
+        navigate("/"); // Redirect to the home page after successful login
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Something went wrong!");
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center bg-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 my-5">
       <div className="w-full max-w-md mx-auto flex flex-col justify-center">
@@ -31,6 +72,7 @@ const UserAuthForm = ({ isRegister = false }) => {
           </p>
 
           <div className="mt-4">
+            {/* Google Auth Button */}
             <form className="pb-2">
               <input type="hidden" name="provider" value="google" />
               <button
@@ -61,11 +103,10 @@ const UserAuthForm = ({ isRegister = false }) => {
           <div className="relative my-4">
             <div className="relative flex items-center py-1">
               <div className="grow border-t border-zinc-400"></div>
-              <div className="grow border-t border-zinc-400"></div>
             </div>
           </div>
 
-          <form noValidate className="mb-4">
+          <form noValidate onSubmit={handleSubmit} className="mb-4">
             <div className="grid gap-2">
               <div className="grid gap-1">
                 <label className="text-zinc-950" htmlFor="email">
@@ -77,6 +118,9 @@ const UserAuthForm = ({ isRegister = false }) => {
                   placeholder="name@example.com"
                   type="email"
                   name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <label className="text-zinc-950 mt-2" htmlFor="password">
                   Password
@@ -87,6 +131,9 @@ const UserAuthForm = ({ isRegister = false }) => {
                   type="password"
                   className="mb-2 h-full w-full rounded-lg border border-zinc-800 bg-white px-4 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-400 focus:outline-none"
                   name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 {isRegister && (
                   <>
@@ -99,6 +146,9 @@ const UserAuthForm = ({ isRegister = false }) => {
                       type="password"
                       className="mb-2 h-full w-full rounded-lg border border-zinc-800 bg-white px-4 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-400 focus:outline-none"
                       name="confirm-password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      required
                     />
                   </>
                 )}
@@ -112,12 +162,15 @@ const UserAuthForm = ({ isRegister = false }) => {
             </div>
           </form>
 
+          {error && <p className="text-red-500">{error}</p>}
+          {message && <p className="text-green-500">{message}</p>}
+
           <div className="text-center mt-4">
             {!isRegister ? (
               <>
                 <p className="mb-2">
                   <Link
-                    to="/signin" // "/signin/forgetpassword"
+                    to="/signin"
                     className="font-medium text-zinc-600 text-sm hover:text-zinc-950 transition-colors"
                   >
                     Forgot your password?
