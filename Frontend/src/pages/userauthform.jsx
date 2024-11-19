@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { authWithGoogle } from "../common/firebase";
 
 const UserAuthForm = ({ isRegister = false }) => {
   const navigate = useNavigate();
@@ -13,23 +14,23 @@ const UserAuthForm = ({ isRegister = false }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Registration validation: Password and Confirm Password should match
     if (isRegister && password !== confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
 
-    // Prepare data to send to the backend
     const userData = { email, password };
+
+    const serverDomain = import.meta.env.VITE_SERVER_DOMAIN || "http://localhost:3000";
 
     try {
       let response;
 
       if (isRegister) {
         // Sending registration request to the backend
-        response = await axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/register`, userData);
+        response = await axios.post(`${serverDomain}/register`, userData);        
         setMessage(response.data.message);
-        navigate("/signin"); // Redirect to sign-in after successful registration
+        navigate("/signin");
       } else {
         // Sending signin request to the backend
         response = await axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/signin`, userData);
@@ -40,6 +41,36 @@ const UserAuthForm = ({ isRegister = false }) => {
     } catch (err) {
       setError(err.response?.data?.message || "Something went wrong!");
     }
+  };
+
+  const handleGoogleAuth = (e) => {
+    e.preventDefault();
+
+    authWithGoogle()
+      .then(async (user) => {
+        const userData = {
+          access_token: user.accessToken,
+        };
+
+        try {
+          const response = await axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/google-auth`, userData);
+          setMessage(response.data.message);
+
+          // If a token is received, storing it in localStorage for future authenticated requests
+          if (response.data.token) {
+            localStorage.setItem('authToken', response.data.token);
+          }
+
+          navigate("/");
+        } catch (error) {
+          console.error("Authentication failed:", error);
+          setMessage("An error occurred during authentication.");
+        }
+      })
+      .catch((err) => {
+        console.error('Error during Google authentication:', err);
+        setMessage("Trouble signing in through Google.");
+      });
   };
 
   return (
@@ -71,11 +102,11 @@ const UserAuthForm = ({ isRegister = false }) => {
             {isRegister ? "Create an account to get started!" : "Enter your email and password to sign in!"}
           </p>
 
-          <div className="mt-4">
-            {/* Google Auth Button */}
+          <div className="mt- 4">
             <form className="pb-2">
               <input type="hidden" name="provider" value="google" />
               <button
+                onClick={handleGoogleAuth}
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 w-full text-zinc-950 py-6 border bg-background hover:bg-accent border-black"
                 type="submit"
               >
@@ -118,6 +149,7 @@ const UserAuthForm = ({ isRegister = false }) => {
                   placeholder="name@example.com"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -131,6 +163,7 @@ const UserAuthForm = ({ isRegister = false }) => {
                   type="password"
                   className="mb-2 h-full w-full rounded-lg border border-zinc-800 bg-white px-4 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-400 focus:outline-none"
                   name="password"
+                  autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -146,6 +179,7 @@ const UserAuthForm = ({ isRegister = false }) => {
                       type="password"
                       className="mb-2 h-full w-full rounded-lg border border-zinc-800 bg-white px-4 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-400 focus:outline-none"
                       name="confirm-password"
+                      autoComplete="new-password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
@@ -154,7 +188,7 @@ const UserAuthForm = ({ isRegister = false }) => {
                 )}
               </div>
               <button
-                className="mt-10 inline-flex justify-center rounded-lg text-sm font-semibold py-3.5 px-4 bg-slate-900 border border-slate-900 text-white hover:bg-slate-800 transition"
+                className="mt-10 inline-flex justify-center rounded-3xl text-sm font-semibold py-3.5 px-4 bg-slate-900 border border-slate-900 text-white hover:bg-slate-800 transition"
                 type="submit"
               >
                 {isRegister ? "Register" : "Sign in"}
