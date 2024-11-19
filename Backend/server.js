@@ -6,8 +6,9 @@ import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import User from './models/User.js'; 
 import admin from 'firebase-admin';
-import serviceAccountKey from './housepricer-50aa6-firebase-adminsdk-r3edp-69a0f309e1.json' with { type: "json" };
 import { getAuth } from 'firebase-admin/auth';
+
+const serviceAccountKey = JSON.parse(process.env.FIREBASE_ADMIN_CREDENTIALS);
 
 let profile_imgs_name_list = ["Garfield", "Tinkerbell", "Annie", "Loki", "Cleo", "Angel", "Bob", "Mia", "Coco", "Gracie", "Bear", "Bella", "Abby", "Harley", "Cali", "Leo", "Luna", "Jack", "Felix", "Kiki"];
 let profile_imgs_collections_list = ["notionists-neutral", "adventurer","lorelei","lorelei-neutral","notionists",];
