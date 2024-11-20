@@ -5,5 +5,12 @@ This project is a **data science-driven web application** designed to predict ho
 
 We are using the **MERN stack** for the frontend and backend integration, while the machine learning model is built using **Python** and served via an API. This project provides us with an opportunity to practice both web development and data science concepts, focusing on creating a full-stack application that is both functional and scalable.
 
+##
 
+### Some Previews
 
+![Product Images](./Frontend/src/assets/Screenshot1.png)
+
+![Product Images](./Frontend/src/assets/Screenshot2.png)
+
+![Product Images](./Frontend/src/assets/Screenshot3.png)
